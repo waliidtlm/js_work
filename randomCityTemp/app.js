@@ -19,18 +19,17 @@
         return data;
         }
 
-      console.log(cities)
+       console.log(cities)
 
       
       function selectRandomCity(cities) {
         const randomIndex = Math.floor(Math.random() * cities.length);
         return cities[randomIndex];
       }
-     console.log(selectRandomCity(cities));
+    //  console.log(selectRandomCity(cities));
     async function fetchcities(){
-        cities.forEach(async(current)=>{
-           let data2 = await fetchdata(current.lat,current.lng)
-          console.log("City : "+current.name +"  temperature: "+ data2.current_weather.temperature);
-        })
+      const city = selectRandomCity(cities)
+           let data2 = await fetchdata(city.lat,city.lng)
+          console.log("City : "+city.name +"  temperature: "+ data2.current_weather.temperature);
     }
     fetchcities()
