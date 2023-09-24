@@ -2,10 +2,13 @@ const express = require('express');
 const morgan = require('morgan');
 const app = express();
 const PORT = 3000;
+
+// Use Morgan for logging requests
+app.use(morgan('dev'));
+
 app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', './views');
-
 
 
 let products = [
