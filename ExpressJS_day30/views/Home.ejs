@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+         .product-card {
+            border: 1px solid #000;
+            border-radius: 15px;
+            margin: 5px;
+            padding: 5px;
+            background-color: rgb(238, 234, 234);
+            text-align: center;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+
+    <h1>Product List</h1>
+     <% products.forEach(function(product) { %>
+         <div class="product-card">
+             <h2><%= product.name %></h2>
+         </div>
+    <% }); %>
+
+    
+</body>
+</html>
