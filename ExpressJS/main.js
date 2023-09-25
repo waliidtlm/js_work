@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 
 // Get a list of products and render an EJS template
 app.get('/products', (req, res) => {
-  res.render('products', { products: products });
+  res.render('Home', { products: products });
 });
 
 // Get a product by ID and render an EJS template
@@ -43,7 +43,7 @@ app.get('/products/:id', (req, res) => {
   const product = products.find((p) => p.id === productId);
 
   if (product) {
-    res.render('product', { product: product });
+    res.render('productDetails', { product: product });
   } else {
     res.status(404).send('No product found');
   }
