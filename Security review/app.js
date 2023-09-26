@@ -14,10 +14,26 @@ const secretKey =
   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2OTU3MTk2MjQsImV4cCI6MTcyNzI1NTYyNCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.0h6lAUcNL7LrJXUGMqW7w4zA8fxZaXivtIvgw3fusi8"
   
 
-const users = [
-  { id: 1, username: 'user1', password: 'hashed_azerty', role: 'user' },
-  { id: 2, username: 'user2', password: 'hashed_azerty', role: 'user' },
-];
+  const users = [
+    {
+      id: 1,
+      username: 'user1',
+      password: bcrypt.hashSync('azerty', saltRounds),
+      role: 'user',
+    },
+    {
+      id: 2,
+      username: 'user2',
+      password: bcrypt.hashSync('azerty', saltRounds),
+      role: 'user',
+    },
+    {
+      id: 3,
+      username: 'admin',
+      password: bcrypt.hashSync('qwerty', saltRounds), // Change to the actual admin password
+      role: 'admin',
+    },
+  ];
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -52,6 +68,7 @@ app.post('/login', (req, res) => {
       if (result) {
         req.session.isAuthenticated = true;
         res.redirect('/dashboard');
+        
       } else {
         res.redirect('/');
       }
