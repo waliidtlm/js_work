@@ -34,6 +34,7 @@ const secretKey =
       role: 'admin',
     },
   ];
+  
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
